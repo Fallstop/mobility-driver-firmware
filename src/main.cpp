@@ -20,12 +20,16 @@ void buttonPressed() {
 }
 
 void setup() {
+  Serial.begin(9600);
+  Serial.println("Starting up");
+
   setupMotor();
   attachInterrupt(PIN_button, buttonPressed, RISING);
 }
 
 void loop() {
   while (number_to_dispense > 0) {
+    Serial.println("Dispensing");
     
     huntForMag();
     number_to_dispense -= 1;
